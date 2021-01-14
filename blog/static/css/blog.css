@@ -1,5 +1,5 @@
 .page-header {
-    background-color: #30D5C8;
+    background-color:#603F83FF;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
 }
@@ -11,7 +11,9 @@
 }
 
 .content {
+    background-color: #C7D3D4FF;
     margin-left: 40px;
+    padding: 20px 20px 20px 40px;
 }
 
 h1, h2, h3, h4 {
