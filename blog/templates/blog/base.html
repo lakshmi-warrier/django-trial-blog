@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Lobster&display=swap" rel="stylesheet" type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 
     </head>
     <body>
@@ -13,6 +14,8 @@
             <h1><a href="/">Trial Blog - Django</a></h1>
         </div>
         <div class="content container">
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
             <div class="row">
                 <div class="col-md-8">
                 {% block content %}
