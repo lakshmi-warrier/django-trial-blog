@@ -13,7 +13,14 @@
 .content {
     background-color: #C7D3D4FF;
     margin-left: 0px;
-    padding: 20px 20px 20px 40px;
+	height: auto;
+	width: 100%;
+}
+
+.post{
+    background-color: #C7D3D4FF;
+    width: 100vw;
+    margin:0px;
 }
 
 h1, h2, h3, h4 {
