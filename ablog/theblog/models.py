@@ -1,3 +1,5 @@
+import datetime
+import django
 from django.db import models
 from django.urls import reverse
 
@@ -11,7 +13,7 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
-    pub_date = models.DateTimeField(default="2020-01-01 00:00:00.000000")
+    pub_date = models.DateTimeField(default=django.utils.timezone.now)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
