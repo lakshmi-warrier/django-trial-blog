@@ -1,12 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Posts</h1>
+<h1>Posts</h1>
 
-<ul>
+
+<div class="list-group">
     {% for post in object_list %}
-        <li><a href="{%url 'article-detail' post.pk %}">{{ post.title }}</a>, {{ post.author }}<br/>
-        {{ post.body }}</li>
+
+    <a href="{%url 'article-detail' post.pk %}" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{post.title}}</h5>
+            <small>3 days ago</small>
+        </div>
+        <small>Written by <i>{{post.author}}</i> </small>
+
+        <p class="mb-1">{{post.body}}
+        </p>
+    </a>
     {% endfor %}
-</ul>
+
+</div>
 {% endblock %}
