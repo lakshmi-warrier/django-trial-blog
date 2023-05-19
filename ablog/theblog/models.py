@@ -11,6 +11,7 @@ class Post(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
+    pub_date = models.DateTimeField(default="2020-01-01 00:00:00.000000")
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
