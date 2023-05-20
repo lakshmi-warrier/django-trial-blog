@@ -13,3 +13,14 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter body here'}),
             'pub_date': forms.DateTimeInput(attrs={'class': 'form-control', 'placeholder': 'Enter date here'}),
         }
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'title_tag', 'body')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title here'}),
+            'title_tag': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter title tag here'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter body here'}),
+        }
