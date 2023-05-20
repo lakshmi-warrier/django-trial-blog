@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %} Edit blog {% endblock %}
+{% block title %} Register {% endblock %}
 {% block content %}
-<h1>Update blog</h1>
+<h1>Register</h1>
 <br>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Update</button>
+    <button type="submit" class="btn btn-success">Sign up</button>
     {% endblock %}

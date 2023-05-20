@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1> {{post.title}}</h1>
-    <small> {{post.author}} </small><br>
+    <small> {{post.author}} | {{post.pub_date}}</small><br>
     <hr>
 
     {{post.body}}
@@ -13,7 +13,7 @@
     <br>
     <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
     <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Edit</a>
-    <a href="{% url 'delete_post' post.pk %}" class="btn btn-secondary">Delete</a>
+    <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
 
 
 {% endblock %}
