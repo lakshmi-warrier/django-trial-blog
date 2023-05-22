@@ -3,8 +3,17 @@
 {% block content %}
 <h1>Update blog</h1>
 <br>
+
+{% if user.is_authenticated %}
+{% if user == post.author %}
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-success">Update</button>
+    {% else %}
+    You are not the author of the blog <i>{{post.title}}</i>. Only authors can edit their blogs
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+    {% endif %}
+    {% endif %}
     {% endblock %}

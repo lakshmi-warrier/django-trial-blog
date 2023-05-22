@@ -16,7 +16,7 @@
 
         <small>Written by <i>{{post.author}}</i> </small>
 
-        <p class="mb-1">{{post.body}}
+        <p class="mb-1">{{post.body | slice:":200"}}
         </p>
     </a>
     {% endfor %}

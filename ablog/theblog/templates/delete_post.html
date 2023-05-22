@@ -3,8 +3,20 @@
 {% block content %}
 <h1>Delete blog</h1>
 <br>
+
+{% if user.is_authenticated %}
+{% if user == post.author %}
 <h3>Are you sure you want to delete "{{ post.title }}"?</h3>
-    <form method="POST">
+<form method="POST">
     {% csrf_token %}
     <button type="submit" class="btn btn-secondary">Delete</button>
+
+    {% else %}
+    You are not the author of the blog <i>{{post.title}}</i>. Only authors can delete their blogs
+    <br><br>
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+    {% endif %}
+    {% endif %}
+
+
     {% endblock %}
