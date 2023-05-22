@@ -14,7 +14,12 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     pub_date = models.DateTimeField(default=django.utils.timezone.now)
+    likes = models.ManyToManyField(User, related_name='blog_posts')
 
+
+    def total_likes(self):
+        return self.likes.count()
+    
     def __str__(self):
         return self.title + ' | ' + str(self.author)
 

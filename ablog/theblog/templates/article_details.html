@@ -5,19 +5,39 @@
 {% block content %}
 <h1> {{post.title}}</h1>
 <small> {{post.author}} | {{post.pub_date}}</small><br>
+{{total_likes }} Likes
+
 <hr>
 
 {{post.body}}
 
 <hr>
 <br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+<a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
 
 {% if user.is_authenticated %}
 {% if user == post.author %}
-<a href="{% url 'update_post' post.pk %}" class="btn btn-secondary">Edit</a>
+
+<a href="{% url 'update_post' post.pk %}" class="btn btn-success">Edit</a>
 <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
+
+{% else %}
+<form action="{% url 'like_post' post.pk %}" method="POST">
+    {% csrf_token %}
+    <br>
+
+    {% if liked %}
+
+    <button type="submit" name="post_id" class="btn btn-danger btn-sm" value="{{ post.id }}">Unlike 
+    </button>
+
+    {% else %}
+    <button type="submit" name="post_id" class="btn btn-primary btn-sm" value="{{ post.id }}">Likes - {{ total_likes}}
+    </button>
+    {% endif %}
+</form>
 {% endif %}
 {% endif %}
+
 
 {% endblock %}
