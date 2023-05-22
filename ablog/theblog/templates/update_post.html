@@ -9,7 +9,13 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Update</button>
+
+    <div class="d-flex flex-row-reverse ">
+
+        <button type="submit" class="btn btn-success">Update</button>
+        <a class="btn btn-outline-secondary mx-4" href="{% url 'home' %}">Back</button> </a>
+
+    </div>
     {% else %}
     You are not the author of the blog <i>{{post.title}}</i>. Only authors can edit their blogs
     <br><br>

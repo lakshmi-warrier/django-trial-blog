@@ -9,7 +9,15 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Post</button>
+
+    <div class="d-flex flex-row-reverse ">
+
+        <button type="submit" class="btn btn-success">Post</button>
+        <a class="btn btn-outline-secondary mx-4" href="{% url 'home' %}">Back</button> </a>
+
+    </div>
+
+
 
     {% else %}
     <h5>Register or log in to add new blog</h5>
