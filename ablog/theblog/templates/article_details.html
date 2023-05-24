@@ -3,36 +3,43 @@
 {% block title %}{{post.title}} {% endblock %}
 
 {% block content %}
+
 <h1> {{post.title}}</h1>
+<h6>{{post.title_tag}}</h6>
+
+{% if user.is_authenticated %}
+{% if user == post.author %}
+<a href="{% url 'update_post' post.pk %}" class="btn btn-success btn-sm"><i class="fa fa-pencil px-2"> </i></a>
+<a href="{% url 'delete_post' post.pk %}" class="btn btn-danger btn-sm"><i class="fa fa-trash px-2"> </i></a>
+<br>
+
+{% endif %}
+{% endif %}
 <small> {{post.author}} | {{post.pub_date}}</small><br>
 {{total_likes }} Likes
 
 <hr>
 
-{{post.body}}
+{{post.body | safe}}
 
 <hr>
 <br>
-<a href="{% url 'home' %}" class="btn btn-secondary">Home</a>
+<a href="{% url 'home' %}" class="btn btn-secondary"><i class="fa fa-home px-2"></i></a>
 
 {% if user.is_authenticated %}
-{% if user == post.author %}
+{% if user != post.author %}
 
-<a href="{% url 'update_post' post.pk %}" class="btn btn-success">Edit</a>
-<a href="{% url 'delete_post' post.pk %}" class="btn btn-danger">Delete</a>
-
-{% else %}
 <form action="{% url 'like_post' post.pk %}" method="POST">
     {% csrf_token %}
     <br>
 
     {% if liked %}
 
-    <button type="submit" name="post_id" class="btn btn-danger btn-sm" value="{{ post.id }}">Unlike 
+    <button type="submit" name="post_id" class="btn btn-danger btn-sm" value="{{ post.id }}">Unlike<i class="fa fa-thumbs-down px-2"></i>
     </button>
 
     {% else %}
-    <button type="submit" name="post_id" class="btn btn-primary btn-sm" value="{{ post.id }}">Likes - {{ total_likes}}
+    <button type="submit" name="post_id" class="btn btn-primary btn-sm" value="{{ post.id }}">Like <i class="fa fa-thumbs-up px-2"></i> 
     </button>
     {% endif %}
 </form>

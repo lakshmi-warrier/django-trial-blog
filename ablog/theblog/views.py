@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import PostForm, EditForm
@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 def LikeView(request, pk):
     post = get_object_or_404(Post, id=request.POST.get('post_id'))
 
-    # liked = False
+    liked = False
     print(post.likes.all())
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -22,7 +22,7 @@ def LikeView(request, pk):
         liked = True
 
     post.likes.add(request.user)
-    return HttpResponseRedirect(reverse_lazy('article-detail', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
 
 
 class HomeView(ListView):

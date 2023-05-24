@@ -8,6 +8,8 @@
 
 <form method="POST">
     {% csrf_token %}
+    {{ form.media }}
+
     {{ form.as_p }}
 
     <div class="d-flex flex-row-reverse ">
